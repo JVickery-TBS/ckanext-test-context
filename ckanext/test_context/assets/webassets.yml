@@ -1,0 +1,12 @@
+main-js:
+  output: ckanext-test-context/%(version)s_test_context.js
+  extra:
+    preload:
+      - base/main  # need ckan JS and jQuery
+  contents:
+    - test_context.js
+
+main-css:
+  output: ckanext-test-context/%(version)s_test_context.css
+  contents:
+    - test_context.css

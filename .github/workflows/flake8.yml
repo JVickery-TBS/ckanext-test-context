@@ -1,0 +1,22 @@
+name: Lint
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04  # ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.9'
+      - name: Install requirements
+        run: pip install flake8 pycodestyle
+      - name: Check syntax
+        # Stop the build if there are Python syntax errors or undefined names
+        run: flake8 --show-source
+
+      - name: Warnings
+        run: flake8
